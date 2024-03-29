@@ -1,4 +1,4 @@
-package com.fithubconnectmobile
+package com.fithub.fithubconnectmobile
 
 import android.app.Application
 import com.facebook.react.PackageList
