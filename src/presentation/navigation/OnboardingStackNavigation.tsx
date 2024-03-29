@@ -22,6 +22,8 @@ import {
 } from '../screens/onboarding';
 import HomeBottomNavigation from './HomeBottomNavigation';
 import LoadingScreen from '../screens/Loading';
+import {useEffect} from 'react';
+import SplashScreen from 'react-native-splash-screen';
 
 /**
  * The parameter list for the OnboardingStackNavigation component.
@@ -50,6 +52,10 @@ const fadeAnimation: StackCardStyleInterpolator = ({current}) => ({
 });
 
 const OnboardingStackNavigation = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
     <Stack.Navigator
       initialRouteName="Loading"
