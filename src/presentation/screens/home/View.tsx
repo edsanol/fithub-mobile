@@ -1,22 +1,22 @@
-import {View, Text, ScrollView, RefreshControl} from 'react-native';
-import {BackgoundComponent} from '../../components';
+import { View, Text, ScrollView, RefreshControl } from 'react-native';
+import { BackgoundComponent } from '../../components';
 import DateHeader from './components/DateHeader';
 import homeStyles from './styles';
 import HomeViewModel from './ViewModel';
 import ProgressCard from './components/ProgressCard';
-import {StackScreenProps} from '@react-navigation/stack';
-import {MeasurementStackParamList} from '../../navigation/MeasurementNavigation';
+import { StackScreenProps } from '@react-navigation/stack';
+import { MeasurementStackParamList } from '../../navigation/MeasurementNavigation';
 import PlanActiveInfo from './components/PlanActiveInfo';
 import MembershipExpiration from './components/MembershipExpiration';
 import CardInfo from './components/CardInfo';
 import HomeLoadingSkeleton from './components/HomeLoadingSkeleton';
-import {useCallback, useEffect, useRef, useState} from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface HomeProps
-  extends StackScreenProps<MeasurementStackParamList, 'Home'> {}
+  extends StackScreenProps<MeasurementStackParamList, 'Home'> { }
 
-const HomeScreen = ({navigation}: HomeProps) => {
-  const {measurements, loading, athlete, refreshing, handleRefresh} =
+const HomeScreen = ({ navigation }: HomeProps) => {
+  const { measurements, loading, athlete, refreshing, handleRefresh } =
     HomeViewModel();
   const timeoutRef = useRef<any>();
 
@@ -24,7 +24,7 @@ const HomeScreen = ({navigation}: HomeProps) => {
     handleRefresh(true);
     timeoutRef.current = setTimeout(() => {
       handleRefresh(false);
-    }, 1000);
+    }, 700);
   }, []);
 
   useEffect(() => {
@@ -37,17 +37,17 @@ const HomeScreen = ({navigation}: HomeProps) => {
 
   return (
     <BackgoundComponent>
-      <View style={{flex: 1, marginHorizontal: 16}}>
+      <View style={{ flex: 1, marginHorizontal: 16 }}>
         <DateHeader />
         {loading ? (
           <HomeLoadingSkeleton />
         ) : (
           <ScrollView
-            style={{flex: 1}}
+            style={{ flex: 1 }}
             showsVerticalScrollIndicator={false}
             contentContainerStyle={homeStyles.scrollView}
             refreshControl={
-              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={'white'} />
             }>
             <View
               style={{
@@ -75,7 +75,7 @@ const HomeScreen = ({navigation}: HomeProps) => {
             <View style={homeStyles.titleContainer}>
               <Text style={homeStyles.titleText}>Sigue Tu Proceso</Text>
             </View>
-            <View style={{flex: 1}}>
+            <View style={{ flex: 1 }}>
               {measurements.map((item, index) => (
                 <ProgressCard
                   measurement={item}

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const homeStyles = StyleSheet.create({
   cardInfo: {
@@ -95,12 +95,13 @@ const homeStyles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '500',
     textAlign: 'center',
-    textAlignVertical: 'center',
     width: 52,
     height: 20,
     borderRadius: 8,
     backgroundColor: '#2A49FF',
     marginRight: 16,
+    overflow: 'hidden',
+    lineHeight: 20,
   },
   progressCardLabel: {
     fontSize: 12,

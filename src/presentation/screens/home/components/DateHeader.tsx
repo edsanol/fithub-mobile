@@ -1,7 +1,7 @@
-import {View, Text, StyleSheet, TouchableWithoutFeedback} from 'react-native';
+import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import HomeViewModel from '../ViewModel';
-import {SvgXml} from 'react-native-svg';
-import {FitHub} from '../../../assets/svg/iconSVG';
+import { SvgXml } from 'react-native-svg';
+import { FitHub } from '../../../assets/svg/iconSVG';
 
 function capitalizarPrimeraLetra(str: string) {
   const stringReturn = str.charAt(0).toUpperCase() + str.slice(1);
@@ -13,16 +13,16 @@ function capitalizarPrimeraLetra(str: string) {
 }
 
 const DateHeader = () => {
-  const {date, value, weeks, athlete, gym} = HomeViewModel();
+  const { date, value, weeks, athlete, gym } = HomeViewModel();
 
   return (
-    <View style={{minHeight: 148, maxHeight: 148}}>
+    <View style={{ minHeight: 148, maxHeight: 148 }}>
       <View style={styles.container}>
-        <View style={{justifyContent: 'space-evenly'}}>
-          <Text style={{fontSize: 14, fontWeight: '700', color: '#FFFFFF'}}>
+        <View style={{ justifyContent: 'space-evenly' }}>
+          <Text style={{ fontSize: 14, fontWeight: '700', color: '#FFFFFF' }}>
             Hola, {athlete?.athleteName}
           </Text>
-          <Text style={{fontSize: 12, fontWeight: '400', color: '#6B7280'}}>
+          <Text style={{ fontSize: 12, fontWeight: '400', color: '#6B7280' }}>
             {gym?.gymName}.
           </Text>
         </View>
@@ -30,7 +30,7 @@ const DateHeader = () => {
           <SvgXml xml={FitHub} width={60} height={20} />
         </View>
       </View>
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         <Text style={styles.textDate}>{capitalizarPrimeraLetra(date)}</Text>
         {weeks.map((dates, index) => (
           <View style={styles.itemRow} key={index}>
@@ -48,7 +48,7 @@ const DateHeader = () => {
                       },
                     ]}>
                     <Text
-                      style={[styles.itemWeekday, isActive && {color: '#fff'}]}>
+                      style={[styles.itemWeekday, isActive && { color: '#fff' }]}>
                       {capitalizarPrimeraLetra(item.weekday)}
                     </Text>
                     <Text
@@ -57,6 +57,7 @@ const DateHeader = () => {
                         isActive && {
                           backgroundColor: '#FFFFFF',
                           color: '#000000',
+                          overflow: 'hidden',
                         },
                       ]}>
                       {item.date.getDate()}
@@ -117,6 +118,6 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     textAlign: 'center',
     backgroundColor: 'transparent',
-    textAlignVertical: 'center',
+    lineHeight: 28,
   },
 });

@@ -1,4 +1,4 @@
-import {Platform, StatusBar, StyleSheet} from 'react-native';
+import { Platform, StatusBar, StyleSheet } from 'react-native';
 
 const backgroundStyle = StyleSheet.create({
   mainContainer: {
@@ -7,7 +7,7 @@ const backgroundStyle = StyleSheet.create({
   },
   linearGradient: {
     flex: 1,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    paddingTop: Platform.OS === 'android' ? 68 : 40,
   },
 });
 

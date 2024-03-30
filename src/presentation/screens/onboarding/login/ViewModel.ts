@@ -1,6 +1,7 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import axios from 'axios';
-import {TickerResponseApi} from '../../../../data/api/models/tickerResponseApi';
+import { TickerResponseApi } from '../../../../data/api/models/tickerResponseApi';
+import Config from 'react-native-config';
 
 const LoginViewModel = () => {
   const [email, setEmail] = useState('');
@@ -8,7 +9,7 @@ const LoginViewModel = () => {
 
   const login = async (email: string) => {
     const response = await axios.post<TickerResponseApi<number>>(
-      'http://192.168.0.2:45455/api/Athlete/VerifyLogin',
+      `${String(Config.GENERAL_API)}/Athlete/VerifyLogin`,
       {
         email,
       },

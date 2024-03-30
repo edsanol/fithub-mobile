@@ -1,19 +1,20 @@
-import {useContext, useState} from 'react';
-import {UserContext} from '../../../context/UserContext';
+import { useContext, useState } from 'react';
+import { UserContext } from '../../../context/UserContext';
 import axios from 'axios';
-import {Athlete} from '../../../../domain/entities/Athlete';
-import {AthleteModel} from '../../../../domain/models/AthleteModel';
-import {TickerResponseApi} from '../../../../data/api/models/tickerResponseApi';
+import { Athlete } from '../../../../domain/entities/Athlete';
+import { AthleteModel } from '../../../../domain/models/AthleteModel';
+import { TickerResponseApi } from '../../../../data/api/models/tickerResponseApi';
+import Config from 'react-native-config';
 
 const LoginViewModel = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const {signIn} = useContext(UserContext);
+  const { signIn } = useContext(UserContext);
 
   const login = async (email: string, password: string) => {
     try {
       const response = await axios.post<TickerResponseApi<AthleteModel>>(
-        'http://192.168.0.2:45455/api/Athlete/Login',
+        `${String(Config.GENERAL_API)}/Athlete/Login`,
         {
           email,
           password,
@@ -57,7 +58,7 @@ const LoginViewModel = () => {
     setError(error);
   };
 
-  return {login, handlePassword, handleError, password, error};
+  return { login, handlePassword, handleError, password, error };
 };
 
 export default LoginViewModel;
