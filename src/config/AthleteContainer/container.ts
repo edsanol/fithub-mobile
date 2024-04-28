@@ -6,8 +6,9 @@ import {GetContactInformationUseCase} from '../../domain/usecases/athleteUseCase
 import {LoginUseCase} from '../../domain/usecases/athleteUseCases/LoginUseCase';
 import {RegisterUseCase} from '../../domain/usecases/athleteUseCases/RegisterUseCase';
 import {VeryfyLoginUseCase} from '../../domain/usecases/athleteUseCases/VerifyLoginUseCase';
+import Config from 'react-native-config';
 
-const baseUrl = 'http://192.168.0.2:45455/api';
+const baseUrl = String(Config.GENERAL_API);
 
 const axiosClient = new AxiosHttpClient(baseUrl);
 const loginService = new AthleteServiceImpl(axiosClient);

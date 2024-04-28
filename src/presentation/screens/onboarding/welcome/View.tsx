@@ -5,7 +5,12 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import {MotiView, MotiImage} from 'moti';
+import {
+  MotiView,
+  MotiImage,
+  MotiTransitionProp,
+  StyleValueWithReplacedTransforms,
+} from 'moti';
 import onboardingStyles from './style';
 import LinearGradient from 'react-native-linear-gradient';
 import MaskedView from '@react-native-masked-view/masked-view';
@@ -100,41 +105,65 @@ const OnboardingScreen = ({navigation}: OnboardingProps) => {
           style={imageAthleteSize}
           from={{opacity: 0, translateY: 90}}
           animate={{opacity: 1, translateY: 0}}
-          transition={{type: 'timing', duration: 300}}
+          transition={
+            {type: 'timing', duration: 300} as MotiTransitionProp<
+              StyleValueWithReplacedTransforms<ImageStyle>
+            >
+          }
         />
         <MotiImage
           source={require('../../../assets/mancuerna.png')}
           style={imageMancuernaSize}
           from={{opacity: 0, translateY: 0, translateX: 0}}
           animate={{opacity: 0.6, translateY: 50, translateX: 150}}
-          transition={{type: 'timing', duration: 600}}
+          transition={
+            {type: 'timing', duration: 600} as MotiTransitionProp<
+              StyleValueWithReplacedTransforms<ImageStyle>
+            >
+          }
         />
         <MotiImage
           source={require('../../../assets/ball.png')}
           style={imageBallSize}
           from={{opacity: 0, translateY: 0, translateX: 0}}
           animate={{opacity: 0.6, translateY: 110, translateX: -10}}
-          transition={{type: 'timing', duration: 700}}
+          transition={
+            {type: 'timing', duration: 700} as MotiTransitionProp<
+              StyleValueWithReplacedTransforms<ImageStyle>
+            >
+          }
         />
         <MotiImage
           source={require('../../../assets/tapete.png')}
           style={imageTapeteSize}
           from={{opacity: 0, translateY: 0, translateX: 0}}
           animate={{opacity: 0.6, translateY: -60, translateX: -90}}
-          transition={{type: 'timing', duration: 800}}
+          transition={
+            {type: 'timing', duration: 800} as MotiTransitionProp<
+              StyleValueWithReplacedTransforms<ImageStyle>
+            >
+          }
         />
         <MotiImage
           source={require('../../../assets/lazo.png')}
           style={imageLazoSize}
           from={{opacity: 0, translateY: 0, translateX: 0}}
           animate={{opacity: 0.6, translateY: -150, translateX: 90}}
-          transition={{type: 'timing', duration: 600}}
+          transition={
+            {type: 'timing', duration: 600} as MotiTransitionProp<
+              StyleValueWithReplacedTransforms<ImageStyle>
+            >
+          }
         />
       </View>
       <MotiView
         from={{opacity: 0, translateY: 50}}
         animate={{opacity: 1, translateY: 0}}
-        transition={{type: 'timing', duration: 300}}>
+        transition={
+          {type: 'timing', duration: 300} as MotiTransitionProp<
+            StyleValueWithReplacedTransforms<ImageStyle>
+          >
+        }>
         <MaskedView
           maskElement={<Text style={titleStyle}>¡FitHub Connect!</Text>}>
           <LinearGradient

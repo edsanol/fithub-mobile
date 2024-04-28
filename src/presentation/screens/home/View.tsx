@@ -68,7 +68,7 @@ const HomeScreen = ({navigation}: HomeProps) => {
               }}
             />
             <MembershipExpiration
-              startDate={athlete?.startDate}
+              startDate={new Date().toISOString().split('T')[0]}
               endDate={athlete?.endDate}
             />
             <CardInfo measurements={measurements} />

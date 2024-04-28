@@ -6,7 +6,12 @@ import {
   StyleProp,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {MotiImage, MotiView} from 'moti';
+import {
+  MotiImage,
+  MotiTransitionProp,
+  MotiView,
+  StyleValueWithReplacedTransforms,
+} from 'moti';
 import MaskedView from '@react-native-masked-view/masked-view';
 import onboardingStyles from '../welcome/style';
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
@@ -87,41 +92,65 @@ const AboutScreen = ({navigation}: OnboardingProps) => {
           style={dynamicStyles.imageStyle}
           from={{opacity: 0, translateY: 120}}
           animate={{opacity: 1, translateY: 0}}
-          transition={{type: 'timing', duration: 450}}
+          transition={
+            {type: 'timing', duration: 450} as MotiTransitionProp<
+              StyleValueWithReplacedTransforms<ImageStyle>
+            >
+          }
         />
         <MotiImage
           source={require('../../../assets/icon-graph.png')}
           style={dynamicStyles.iconGraphStyle}
           from={{opacity: 0, translateY: 0, translateX: 0}}
           animate={{opacity: 1, translateY: 80, translateX: 160}}
-          transition={{type: 'timing', duration: 600}}
+          transition={
+            {type: 'timing', duration: 600} as MotiTransitionProp<
+              StyleValueWithReplacedTransforms<ImageStyle>
+            >
+          }
         />
         <MotiImage
           source={require('../../../assets/icon-muscle.png')}
           style={dynamicStyles.iconMuscleStyle}
           from={{opacity: 0, translateY: 0, translateX: 0}}
           animate={{opacity: 1, translateY: 80, translateX: -110}}
-          transition={{type: 'timing', duration: 600}}
+          transition={
+            {type: 'timing', duration: 600} as MotiTransitionProp<
+              StyleValueWithReplacedTransforms<ImageStyle>
+            >
+          }
         />
         <MotiImage
           source={require('../../../assets/pie.png')}
           style={dynamicStyles.iconPieStyle}
           from={{opacity: 0, translateY: 0, translateX: 0}}
           animate={{opacity: 1, translateY: -140, translateX: -110}}
-          transition={{type: 'timing', duration: 600}}
+          transition={
+            {type: 'timing', duration: 600} as MotiTransitionProp<
+              StyleValueWithReplacedTransforms<ImageStyle>
+            >
+          }
         />
         <MotiImage
           source={require('../../../assets/icon-athlete.png')}
           style={dynamicStyles.iconAthleteStyle}
           from={{opacity: 0, translateY: 0, translateX: 0}}
           animate={{opacity: 1, translateY: -140, translateX: 160}}
-          transition={{type: 'timing', duration: 600}}
+          transition={
+            {type: 'timing', duration: 600} as MotiTransitionProp<
+              StyleValueWithReplacedTransforms<ImageStyle>
+            >
+          }
         />
       </View>
       <MotiView
         from={{opacity: 0, translateY: 50}}
         animate={{opacity: 1, translateY: 0}}
-        transition={{type: 'timing', duration: 300}}>
+        transition={
+          {type: 'timing', duration: 300} as MotiTransitionProp<
+            StyleValueWithReplacedTransforms<ImageStyle>
+          >
+        }>
         <MaskedView
           maskElement={
             <Text

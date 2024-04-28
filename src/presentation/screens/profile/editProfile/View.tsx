@@ -6,8 +6,6 @@ import {
   HeaderWithBackButton,
   SelectDropdown,
 } from '../../../components';
-import {SvgXml} from 'react-native-svg';
-import {BackButton, FitHub} from '../../../assets/svg/iconSVG';
 import CustomFormInput from './components/CustomFormInput';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import EditProfileViewModel from './ViewModel';

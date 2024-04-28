@@ -4,6 +4,7 @@ import {Athlete} from '../../../../domain/entities/Athlete';
 import {UserContext} from '../../../context/UserContext';
 import {AthleteModel} from '../../../../domain/models/AthleteModel';
 import {TickerResponseApi} from '../../../../data/api/models/tickerResponseApi';
+import Config from 'react-native-config';
 
 const RegisterViewModel = () => {
   const [password, setPassword] = useState('');
@@ -13,7 +14,7 @@ const RegisterViewModel = () => {
 
   const register = async (email: string, password: string) => {
     const response = await axios.post<TickerResponseApi<AthleteModel>>(
-      'http://192.168.0.2:45455/api/Athlete/CreatePassword',
+      `${String(Config.GENERAL_API)}/Athlete/CreatePassword`,
       {
         email,
         password,
