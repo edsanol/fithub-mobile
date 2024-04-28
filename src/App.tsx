@@ -1,11 +1,22 @@
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {UserProvider} from './presentation/context/UserContext';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { UserProvider } from './presentation/context/UserContext';
 import OnboardingStackNavigation from './presentation/navigation/OnboardingStackNavigation';
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
+import { useEffect } from 'react';
+import { Platform, StatusBar } from 'react-native';
 
 const App = () => {
+
+  useEffect(() => {
+    StatusBar.setBarStyle("light-content");
+    if (Platform.OS === "android") {
+      StatusBar.setBackgroundColor("rgba(0,0,0,0)");
+      StatusBar.setTranslucent(true);
+    }
+  }, []);
+
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer
         theme={{
           dark: true,

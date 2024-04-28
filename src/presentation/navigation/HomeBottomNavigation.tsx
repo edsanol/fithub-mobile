@@ -1,8 +1,8 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Platform, StyleSheet} from 'react-native';
-import {TabButton} from '../components';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Platform, StyleSheet } from 'react-native';
+import { TabButton } from '../components';
 import FormScreen from '../screens/form';
-import {BlurView} from '@react-native-community/blur';
+import { BlurView } from '@react-native-community/blur';
 import MeasurementNavigation from './MeasurementNavigation';
 import ProfileStackNavigation from './ProfileStackNavigation';
 
@@ -73,7 +73,7 @@ export default HomeBottomNavigation;
 
 const styles = StyleSheet.create({
   tabBar: {
-    height: 70,
+    height: Platform.OS === 'android' ? 70 : 84,
     position: 'absolute',
     borderColor: '#A0A0A0',
   },
