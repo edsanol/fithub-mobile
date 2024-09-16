@@ -1,6 +1,5 @@
 import {useContext, useEffect, useState} from 'react';
 import {AthleteEditRequestModel} from '../../../../domain/models/AthleteEditRequestModel';
-import moment from 'moment';
 import {UserContext} from '../../../context/UserContext';
 import {editAthleteUseCase} from '../../../../config/AthleteContainer/container';
 
@@ -100,9 +99,10 @@ const EditProfileViewModel = () => {
   };
 
   const handleConfirm = (date: any) => {
+    const formattedDate = new Date(date).toISOString();
     setInputs({
       ...inputs,
-      birthDate: moment(date).format('DD/MM/YYYY').toString(),
+      birthDate: formattedDate,
     });
     hideDatePicker();
   };
