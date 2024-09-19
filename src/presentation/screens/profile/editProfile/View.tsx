@@ -10,6 +10,7 @@ import CustomFormInput from './components/CustomFormInput';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import EditProfileViewModel from './ViewModel';
 import moment from 'moment';
+import LoadingScreen from '../../Loading';
 
 interface EditProfileProps
   extends StackScreenProps<ProfileStackParamList, 'EditProfile'> {}
@@ -22,6 +23,7 @@ const EditProfileScreen = ({navigation}: EditProfileProps) => {
     masterData,
     athlete,
     canSave,
+    loading,
     showDatePicker,
     hideDatePicker,
     handleConfirm,
@@ -29,6 +31,14 @@ const EditProfileScreen = ({navigation}: EditProfileProps) => {
     handleSelectChange,
     handleEditAthlete,
   } = EditProfileViewModel();
+
+  if (loading) {
+    return (
+      <>
+        <LoadingScreen show={false} />
+      </>
+    );
+  }
 
   return (
     <BackgoundComponent>

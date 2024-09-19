@@ -1,6 +1,5 @@
-import {View, ActivityIndicator} from 'react-native';
+import {View} from 'react-native';
 import {BackgoundComponent} from '../../components';
-import {Text} from 'moti';
 import {SvgXml} from 'react-native-svg';
 import {FitHub} from '../../assets/svg/iconSVG';
 import LottieView from 'lottie-react-native';

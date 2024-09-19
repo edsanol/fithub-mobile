@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from 'react';
+import {useCallback, useContext, useEffect, useState} from 'react';
 import {AthleteEditRequestModel} from '../../../../domain/models/AthleteEditRequestModel';
 import {UserContext} from '../../../context/UserContext';
 import {editAthleteUseCase} from '../../../../config/AthleteContainer/container';
@@ -65,6 +65,20 @@ const EditProfileViewModel = () => {
     birthDate: athlete?.birthDate || '',
     genre: athlete?.genre || '',
   });
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (athlete) {
+      setInputs({
+        athleteName: athlete?.athleteName || '',
+        athleteLastName: athlete?.athleteLastName || '',
+        email: athlete?.email || '',
+        phoneNumber: athlete?.phoneNumber || '',
+        birthDate: athlete?.birthDate || '',
+        genre: athlete?.genre || '',
+      });
+    }
+  }, [athlete]);
 
   useEffect(() => {
     if (athlete) {
@@ -77,14 +91,17 @@ const EditProfileViewModel = () => {
     }
   }, [inputs, athlete]);
 
-  const handleEditAthlete = async () => {
+  const handleEditAthlete = useCallback(async () => {
     try {
+      setLoading(true);
       const response = await editAthleteUseCase.execute(inputs);
       updateAthlete(response);
     } catch (error) {
       console.log('error 1', error);
+    } finally {
+      setLoading(false);
     }
-  };
+  }, [inputs, athlete]);
 
   const handleInputChange = (name: string, value: string) => {
     setInputs({...inputs, [name]: value});
@@ -99,7 +116,11 @@ const EditProfileViewModel = () => {
   };
 
   const handleConfirm = (date: any) => {
-    const formattedDate = new Date(date).toISOString();
+    const adjustedDate = new Date(
+      date.getTime() - date.getTimezoneOffset() * 60000,
+    );
+    const formattedDate = adjustedDate.toISOString().split('T')[0];
+
     setInputs({
       ...inputs,
       birthDate: formattedDate,
@@ -118,6 +139,7 @@ const EditProfileViewModel = () => {
     masterData,
     athlete,
     canSave,
+    loading,
     showDatePicker,
     hideDatePicker,
     handleConfirm,
