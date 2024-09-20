@@ -86,7 +86,7 @@ const LoginScreen = ({navigation}: OnboardingProps) => {
               </Text>
               <Text>Visita </Text>
               <Text style={loginStyles.footerTextLink}>
-                www.fithubconnect.com/partners{' '}
+                https://fithubplus.com/{' '}
               </Text>
               <Text>
                 para unirte a la comunidad y disfrutar de una experiencia

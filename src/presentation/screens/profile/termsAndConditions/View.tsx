@@ -310,7 +310,7 @@ const TermsAndConditionsScreen = ({navigation}: TermsAndConditionsProps) => {
                 fontWeight: '300',
               }}>
               Para consultas o preocupaciones relacionadas con estos Términos,
-              por favor, contáctenos en fithubconnect@gmail.com.
+              por favor, contáctenos en fithubconnectplus@gmail.com.
             </Text>
           </ScrollView>
         </View>
