@@ -20,8 +20,10 @@ const CustomTextInput = ({
     <View style={{width: '48%', minHeight: 50, marginVertical: 8}}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput
+        numberOfLines={1}
         placeholder={placeholder}
-        placeholderTextColor="#6B7280"
+        maxFontSizeMultiplier={1}
+        placeholderTextColor="#838995"
         style={styles.input}
         keyboardType="numeric"
         value={value ? value.toString() : ''}
@@ -37,7 +39,7 @@ export default CustomTextInput;
 const styles = StyleSheet.create({
   input: {
     width: '100%',
-    height: 50,
+    height: 52,
     backgroundColor: '#1F222A',
     borderRadius: 18,
     paddingLeft: 20,
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   errorText: {
-    color: 'red',
+    color: '#FA0C00',
     fontSize: 10,
     width: '100%',
     paddingLeft: 4,

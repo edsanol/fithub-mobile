@@ -55,7 +55,7 @@ const OnboardingScreen = ({navigation}: OnboardingProps) => {
       width: width * 0.2,
       height: width * 0.2,
       borderColor: '#98E0D3',
-      backgroundColor: '#98E0D3',
+      backgroundColor: '#4f6d6d',
     }),
     [width],
   );
@@ -66,7 +66,7 @@ const OnboardingScreen = ({navigation}: OnboardingProps) => {
       width: width * 0.16,
       height: width * 0.16,
       borderColor: 'orange',
-      backgroundColor: 'orange',
+      backgroundColor: '#745011',
     }),
     [width],
   );
@@ -77,7 +77,7 @@ const OnboardingScreen = ({navigation}: OnboardingProps) => {
       width: width * 0.18,
       height: width * 0.18,
       borderColor: '#C5F0F5',
-      backgroundColor: '#C5F0F5',
+      backgroundColor: '#6b7c85',
     }),
     [width],
   );
@@ -88,7 +88,7 @@ const OnboardingScreen = ({navigation}: OnboardingProps) => {
       width: width * 0.14,
       height: width * 0.14,
       borderColor: 'violet',
-      backgroundColor: 'violet',
+      backgroundColor: '#6c3e70',
     }),
     [width],
   );

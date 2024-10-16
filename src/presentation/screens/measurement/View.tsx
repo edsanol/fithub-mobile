@@ -231,6 +231,7 @@ const MeasurementStatsScreen = ({route, navigation}: MeasurementStatsProps) => {
                         height: 26,
                         paddingBottom: 0,
                       }}
+                      maxFontSizeMultiplier={1}
                     />
                     <AnimatedText
                       text={activeHigh}
@@ -240,6 +241,7 @@ const MeasurementStatsScreen = ({route, navigation}: MeasurementStatsProps) => {
                         height: 26,
                         paddingBottom: 0,
                       }}
+                      maxFontSizeMultiplier={1}
                     />
                   </View>
                 </View>
@@ -264,7 +266,6 @@ const MeasurementStatsScreen = ({route, navigation}: MeasurementStatsProps) => {
                     domainPadding={28}
                     padding={16}
                     chartPressState={state}
-                    curve="linear"
                     renderOutside={({chartBounds}) => (
                       <ActiveValueIndicator
                         xPosition={state.x.position}

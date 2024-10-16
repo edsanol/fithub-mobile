@@ -36,7 +36,9 @@ const MembershipExpiration = ({
         <Text style={{fontSize: 12, fontWeight: '700', color: '#FFFFFF'}}>
           Tiempo restante
         </Text>
-        <Text style={{fontSize: 12, fontWeight: '500', color: '#6B7280'}}>
+        <Text
+          style={{fontSize: 12, fontWeight: '500', color: '#797f8b'}}
+          maxFontSizeMultiplier={1.1}>
           {daysLeft > 0
             ? `Te quedan ${daysLeft} días para que expire tu membresía`
             : 'Tu membresía ha expirado'}

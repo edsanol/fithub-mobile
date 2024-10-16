@@ -163,7 +163,7 @@ const SelectDropdown = ({
         onPress={() => setToggle(!toggle)}>
         <View style={styles.button}>
           <Animated.View style={[styles.titleBox, translate]}>
-            <Text style={{fontSize: 14, color: '#6B7280', fontWeight: '300'}}>
+            <Text style={{fontSize: 14, color: '#888d96', fontWeight: '300'}}>
               Genero
             </Text>
           </Animated.View>

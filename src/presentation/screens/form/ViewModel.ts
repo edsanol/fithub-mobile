@@ -4,7 +4,6 @@ import {
   getLastMeasurementRegisteredUseCase,
   recordMeasurementProgressUseCase,
 } from '../../../config/MeasurementContainer/container';
-import {UserContext} from '../../context/UserContext';
 import {MeasurementEntity} from '../../../domain/entities/MeasurementEntity';
 
 type MeasurementKey = keyof IMeasurementProgress;
@@ -14,16 +13,40 @@ const inputsInformation: {
   placeholder: string;
   label: string;
 }[] = [
-  {name: 'gluteus', placeholder: 'Medida en cm', label: 'Gluteos (cm)'},
-  {name: 'biceps', placeholder: 'Medida en cm', label: 'Biceps (cm)'},
-  {name: 'chest', placeholder: 'Medida en cm', label: 'Pecho (cm)'},
-  {name: 'waist', placeholder: 'Medida en cm', label: 'Cintura (cm)'},
-  {name: 'thigh', placeholder: 'Medida en cm', label: 'Pierna (cm)'},
-  {name: 'calf', placeholder: 'Medida en cm', label: 'Pantorrilla (cm)'},
-  {name: 'shoulders', placeholder: 'Medida en cm', label: 'Espalda (cm)'},
-  {name: 'forearm', placeholder: 'Medida en cm', label: 'Antebrazo (cm)'},
-  {name: 'height', placeholder: 'Medida en cm', label: 'Estatura (cm)'},
-  {name: 'weight', placeholder: 'Medida en kg', label: 'Peso (kg)'},
+  {
+    name: 'gluteus',
+    placeholder: 'Medida de Gluteos en cm',
+    label: 'Gluteos (cm)',
+  },
+  {name: 'biceps', placeholder: 'Medida de Biceps en cm', label: 'Biceps (cm)'},
+  {name: 'chest', placeholder: 'Medida de Pecho en cm', label: 'Pecho (cm)'},
+  {
+    name: 'waist',
+    placeholder: 'Medida de Cintura en cm',
+    label: 'Cintura (cm)',
+  },
+  {name: 'thigh', placeholder: 'Medida de Pierna en cm', label: 'Pierna (cm)'},
+  {
+    name: 'calf',
+    placeholder: 'Medida de Pantorrilla en cm',
+    label: 'Pantorrilla (cm)',
+  },
+  {
+    name: 'shoulders',
+    placeholder: 'Medida de Espalda en cm',
+    label: 'Espalda (cm)',
+  },
+  {
+    name: 'forearm',
+    placeholder: 'Medida de Antebrazo en cm',
+    label: 'Antebrazo (cm)',
+  },
+  {
+    name: 'height',
+    placeholder: 'Medida de Estatura en cm',
+    label: 'Estatura (cm)',
+  },
+  {name: 'weight', placeholder: 'Medida del Peso en kg', label: 'Peso (kg)'},
 ];
 
 const FormViewModel = () => {

@@ -39,7 +39,9 @@ const CardInfo = ({measurements}: CardInfoProps) => {
 
   return (
     <View style={styles.mainContainer}>
-      <Text style={styles.messageText}>{message}</Text>
+      <Text style={styles.messageText} maxFontSizeMultiplier={1.2}>
+        {message}
+      </Text>
       <View style={styles.dataContainer}>
         <View style={styles.cardInfo}>
           <View style={styles.textContainer}>
@@ -50,7 +52,7 @@ const CardInfo = ({measurements}: CardInfoProps) => {
             <Text style={styles.percentageText}>%</Text>
           </View>
           <View style={styles.muscleContainer}>
-            <Text style={styles.muscleText}>
+            <Text style={styles.muscleText} maxFontSizeMultiplier={1.1}>
               {mapperMuscleNames(mostSignificant.muscle)}
             </Text>
             <Icon
@@ -79,7 +81,7 @@ const CardInfo = ({measurements}: CardInfoProps) => {
         </View>
       </View>
       <View style={{width: '100%', height: 20, justifyContent: 'flex-end'}}>
-        <Text style={{fontSize: 12, fontWeight: '500', color: '#6B7280'}}>
+        <Text style={{fontSize: 12, fontWeight: '500', color: '#7c818d'}}>
           👀 Manténte actualizado con tu rendimiento
         </Text>
       </View>
@@ -91,7 +93,7 @@ export default CardInfo;
 
 const styles = StyleSheet.create({
   mainContainer: {
-    height: 160,
+    minHeight: 160,
     width: '100%',
     backgroundColor: 'rgba(50, 0, 240, 0.1)',
     borderRadius: 16,

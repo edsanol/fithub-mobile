@@ -21,7 +21,7 @@ const formStyles = StyleSheet.create({
   subtitleText: {
     fontSize: 12,
     fontWeight: '400',
-    color: '#4D5058',
+    color: '#7b7f8a',
     paddingHorizontal: '24%',
     textAlign: 'center',
   },

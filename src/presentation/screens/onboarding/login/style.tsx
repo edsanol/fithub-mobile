@@ -65,7 +65,7 @@ const loginStyles = StyleSheet.create({
     fontWeight: '800',
   },
   errorText: {
-    color: '#DE0011',
+    color: '#FA0C00',
     fontSize: 13,
     fontWeight: '600',
   },

@@ -30,7 +30,7 @@ const ContactScreen = ({navigation}: ContactProps) => {
 
   return (
     <BackgoundComponent>
-      <View style={{flex: 1, marginHorizontal: 16}}>
+      <View style={{flex: 1, marginHorizontal: 16}} accessible={true}>
         <View
           style={{
             height: '6%',
@@ -38,13 +38,14 @@ const ContactScreen = ({navigation}: ContactProps) => {
             justifyContent: 'space-between',
           }}>
           <TouchableOpacity
+            accessibilityLabel="Botón para regresar al menú de perfil"
             onPress={() => navigation.goBack()}
             activeOpacity={0.8}>
             <View
               style={{
-                width: 48,
-                height: 48,
-                borderRadius: 24,
+                width: 54,
+                height: 54,
+                borderRadius: 27,
                 borderWidth: 1,
                 borderColor: '#6B7280',
                 justifyContent: 'center',

@@ -31,16 +31,20 @@ const ProgressCard = ({measurement, navigation}: ProgressCardProps) => {
             ...homeStyles.ProgressCardInfoData,
             justifyContent: 'space-between',
           }}>
-          <Text style={homeStyles.progressCardsTitle}>
+          <Text
+            style={homeStyles.progressCardsTitle}
+            maxFontSizeMultiplier={1.3}>
             {mapperMuscleNames(measurement.muscle)}
           </Text>
-          <Text style={homeStyles.progressCardInfoText}>
+          <Text
+            style={homeStyles.progressCardInfoText}
+            maxFontSizeMultiplier={1.2}>
             {measurement.measurement}
             {measurement.muscle === 'Weight' ? ' kg' : ' cm'}
           </Text>
         </View>
         <View style={homeStyles.ProgressCardInfoData}>
-          <Text style={homeStyles.cardProgressText}>
+          <Text style={homeStyles.cardProgressText} maxFontSizeMultiplier={1.1}>
             Has obtenido un progreso del
           </Text>
           <Text
@@ -48,26 +52,30 @@ const ProgressCard = ({measurement, navigation}: ProgressCardProps) => {
               ...homeStyles.progressCardLabel,
               color:
                 measurement.progressPercentage > 0
-                  ? '#008F39'
+                  ? '#3fa247'
                   : measurement.progressPercentage < 0
                   ? '#DE0011'
                   : '#FFFFFF',
-            }}>
+            }}
+            maxFontSizeMultiplier={1.2}>
             {measurement.progressPercentage.toFixed(2)} {'%'}
           </Text>
         </View>
         <View style={homeStyles.ProgressCardInfoData}>
-          <Text style={homeStyles.cardProgressText}>Has aumentado</Text>
+          <Text style={homeStyles.cardProgressText} maxFontSizeMultiplier={1.1}>
+            Has aumentado
+          </Text>
           <Text
             style={{
               ...homeStyles.progressCardLabel,
               color:
                 measurement.progress > 0
-                  ? '#008F39'
+                  ? '#3fa247'
                   : measurement.progress < 0
                   ? '#DE0011'
                   : '#FFFFFF',
-            }}>
+            }}
+            maxFontSizeMultiplier={1.2}>
             {measurement.progress.toFixed(2)}
           </Text>
         </View>

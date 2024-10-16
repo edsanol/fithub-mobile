@@ -1,15 +1,15 @@
-import { TouchableOpacity, Animated } from 'react-native';
+import {TouchableOpacity, Animated} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
-import { useEffect, useRef } from 'react';
+import {useEffect, useRef} from 'react';
 
-const TabButton = ({ icon, title, accessibilityState, onPress }: any) => {
+const TabButton = ({icon, title, accessibilityState, onPress}: any) => {
   const animatedValues = {
     translate: useRef(new Animated.Value(0)).current,
     scale: useRef(new Animated.Value(0)).current,
   };
 
-  const { translate, scale } = animatedValues;
+  const {translate, scale} = animatedValues;
 
   useEffect(() => {
     let isMounted = true;
@@ -83,7 +83,7 @@ const TabButton = ({ icon, title, accessibilityState, onPress }: any) => {
           color={accessibilityState.selected ? 'white' : 'white'}
         />
       </Animated.View>
-      <Animated.Text style={[styles.title, { opacity: scale }]}>
+      <Animated.Text style={[styles.title, {opacity: scale}]}>
         {title}
       </Animated.Text>
     </TouchableOpacity>

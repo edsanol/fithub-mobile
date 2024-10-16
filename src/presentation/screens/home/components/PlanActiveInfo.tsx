@@ -15,7 +15,7 @@ const PlanActiveInfo = ({membershipName}: PlanActiveInfoProps) => {
       <Text style={{fontSize: 18, fontWeight: '700', color: '#FFFFFF'}}>
         Plan Activo
       </Text>
-      <Text style={{fontSize: 12, fontWeight: '500', color: '#6B7280'}}>
+      <Text style={{fontSize: 12, fontWeight: '500', color: '#797f8b'}}>
         {membershipName ? membershipName : 'No tienes un plan activo'}
       </Text>
     </View>

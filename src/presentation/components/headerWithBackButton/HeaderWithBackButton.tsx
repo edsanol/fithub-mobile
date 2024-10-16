@@ -13,18 +13,22 @@ const HeaderWithBackButton = ({
 }: HeaderWithBackButtonProps) => {
   return (
     <View
+      accessible={true}
       style={{
         height: '8%',
         flexDirection: 'row',
         justifyContent: 'space-between',
         ...styles,
       }}>
-      <TouchableOpacity onPress={() => navigation.goBack()} activeOpacity={0.8}>
+      <TouchableOpacity
+        accessibilityLabel="Botón para regresar al menú principal"
+        onPress={() => navigation.goBack()}
+        activeOpacity={0.8}>
         <View
           style={{
-            width: 48,
-            height: 48,
-            borderRadius: 24,
+            width: 54,
+            height: 54,
+            borderRadius: 27,
             borderWidth: 1,
             borderColor: '#6B7280',
             justifyContent: 'center',

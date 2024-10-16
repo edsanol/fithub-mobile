@@ -51,7 +51,7 @@ const Accordion = ({value}: AccordionProps) => {
             name={value.icon}
             size={22}
             color="#2A49FF"
-            style={{bottom: 2}}
+            style={{bottom: -1}}
           />
           <Text style={styles.textTitle}>{value.title}</Text>
         </View>
@@ -86,14 +86,14 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'transparent',
     marginHorizontal: 2,
-    marginVertical: 10,
+    marginVertical: 12,
     borderRadius: 14,
     borderWidth: 1,
     borderColor: '#6B7280',
     overflow: 'hidden',
   },
   titleContainer: {
-    padding: 12,
+    padding: 18,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
