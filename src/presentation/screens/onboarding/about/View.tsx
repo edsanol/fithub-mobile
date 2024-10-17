@@ -178,7 +178,7 @@ const AboutScreen = ({navigation}: OnboardingProps) => {
           }}>
           {titles[currentIndex]}
         </Text>
-        <Text style={onboardingStyles.description}>Tu saud a tu manera</Text>
+        <Text style={onboardingStyles.description}>Tu salud a tu manera</Text>
       </MotiView>
       <GradientButton handleButton={handleNext} title={'Siguiente'} />
     </BackgoundComponent>

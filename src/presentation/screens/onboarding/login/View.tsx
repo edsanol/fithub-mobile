@@ -56,8 +56,8 @@ const LoginScreen = ({navigation}: OnboardingProps) => {
             </LinearGradient>
           </MaskedView>
           <Text style={loginStyles.descriptionText}>
-            Para acceder poder acceder, debes tener una membresía activa con un
-            gimnasio asociado a FitHub Connect.
+            Para poder acceder, debes tener una membresía activa con un gimnasio
+            asociado a FitHub Connect.
           </Text>
         </View>
         <View
