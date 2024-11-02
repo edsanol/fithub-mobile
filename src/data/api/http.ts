@@ -1,10 +1,10 @@
 import 'core-js/stable/atob';
-import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
-import {jwtDecode} from 'jwt-decode';
-import {encryptionService} from '../../config/EncryptionContainer/container';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { jwtDecode } from 'jwt-decode';
+import { encryptionService } from '../../config/EncryptionContainer/container';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Config from 'react-native-config';
-import {DevSettings} from 'react-native';
+import { DevSettings } from 'react-native';
 
 export interface HttpClient {
   get<T>(url: string): Promise<T>;
@@ -16,7 +16,7 @@ export class AxiosHttpClient implements HttpClient {
   private instance: AxiosInstance;
 
   constructor(private baseUrl: string) {
-    this.instance = axios.create({baseURL: this.baseUrl});
+    this.instance = axios.create({ baseURL: this.baseUrl });
 
     this.instance.interceptors.request.use(async config => {
       await this.handleTokenRefresh(config);
@@ -39,6 +39,7 @@ export class AxiosHttpClient implements HttpClient {
         const refreshToken = await AsyncStorage.getItem(
           String(Config.TOKEN_REFRESH_STORAGE_ENCRYPTED),
         );
+
         const refreshTokenDecrypted = refreshToken
           ? await encryptionService.getDecryptedData(refreshToken, getKey)
           : '';
@@ -48,18 +49,26 @@ export class AxiosHttpClient implements HttpClient {
             const response = await this.refreshToken(refreshTokenDecrypted);
             if (response.status === 200) {
               const newToken = await encryptionService.cipherData(
-                response.data.data,
+                response.data.data.token,
                 getKey,
               );
               await AsyncStorage.setItem(
                 String(Config.TOKEN_STORAGE_ENCRYPTED),
                 newToken,
               );
-              config.headers.Authorization = `Bearer ${response.data.data}`;
+              const newRefreshToken = await encryptionService.cipherData(
+                response.data.data.refreshToken,
+                getKey,
+              );
+              await AsyncStorage.setItem(
+                String(Config.TOKEN_REFRESH_STORAGE_ENCRYPTED),
+                newRefreshToken,
+              );
+              config.headers.Authorization = `Bearer ${response.data.data.token}`;
             }
           }
         } catch (error) {
-          console.error('Error during token refresh:', error);
+          console.error('Error during token refresh 1:', error);
           await this.handleAuthenticationError();
         }
       } else {
@@ -87,7 +96,7 @@ export class AxiosHttpClient implements HttpClient {
 
       return response;
     } catch (error) {
-      console.error('Error during token refresh:', error);
+      console.error('Error during token refresh 2:', error);
       throw error;
     }
   }
