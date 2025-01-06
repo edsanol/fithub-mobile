@@ -184,11 +184,18 @@ const HomeViewModel = () => {
   }, [athlete?.athleteId, refreshing]);
 
   useEffect(() => {
+    const setupSignalR = async () => {
+      try {
+        await initializeConnection();
+        await getChannelsByAthlete();
+      } catch (error) {
+        console.error('Error setting up SignalR:', error);
+      }
+    };
+
     if (!isInitializedRef.current) {
       isInitializedRef.current = true;
-
-      initializeConnection();
-      getChannelsByAthlete();
+      setupSignalR();
     }
   }, []);
 
