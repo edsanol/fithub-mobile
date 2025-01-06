@@ -1,7 +1,7 @@
-import {SignalRRepository} from '../../repositories/signalRRepository';
+import { SignalRRepository } from '../../repositories/signalRRepository';
 
 export class SignalRUseCases {
-  constructor(private repository: SignalRRepository) {}
+  constructor(private repository: SignalRRepository) { }
 
   async initializeConnection(): Promise<void> {
     await this.repository.connect();
@@ -23,5 +23,9 @@ export class SignalRUseCases {
 
   disconnect(): void {
     this.repository.disconnect();
+  }
+
+  connectionState(): string {
+    return this.repository.connectionState();
   }
 }

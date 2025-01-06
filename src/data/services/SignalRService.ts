@@ -3,7 +3,7 @@ import {
   HubConnectionBuilder,
   LogLevel,
 } from '@microsoft/signalr';
-import {SignalRService} from '../../domain/services/signalRService';
+import { SignalRService } from '../../domain/services/signalRService';
 
 export class SignalRServiceImpl implements SignalRService {
   private static instance: SignalRServiceImpl;
@@ -54,5 +54,9 @@ export class SignalRServiceImpl implements SignalRService {
       return this.connection.invoke<T>(methodName, channelIds);
     }
     throw new Error('SignalR connection is not established');
+  }
+
+  connectionState(): string {
+    return this.connection?.state || 'Disconnected';
   }
 }

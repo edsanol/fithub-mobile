@@ -4,4 +4,5 @@ export interface SignalRService {
   on(eventName: string, callback: (...args: any[]) => void): void;
   off(eventName: string): void;
   invoke<T>(methodName: string, channelIds: number[]): Promise<T>;
+  connectionState(): string;
 }

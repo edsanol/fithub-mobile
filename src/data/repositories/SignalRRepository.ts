@@ -1,8 +1,12 @@
-import {SignalRRepository} from '../../domain/repositories/signalRRepository';
-import {SignalRService} from '../../domain/services/signalRService';
+import { SignalRRepository } from '../../domain/repositories/signalRRepository';
+import { SignalRService } from '../../domain/services/signalRService';
 
 export class SignalRRepositoryImpl implements SignalRRepository {
-  constructor(private service: SignalRService) {}
+  constructor(private service: SignalRService) { }
+
+  connectionState(): string {
+    return this.service.connectionState();
+  }
 
   async connect(): Promise<void> {
     await this.service.connect();
