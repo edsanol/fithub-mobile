@@ -1,3 +1,4 @@
+import React from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
 import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import {ProfileStackParamList} from '../../../navigation/ProfileStackNavigation';

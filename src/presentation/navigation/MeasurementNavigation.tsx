@@ -5,12 +5,14 @@ import {
 import MeasurementStatsScreen from '../screens/measurement';
 import HomeScreen from '../screens/home';
 import {LastMeasurements} from '../../domain/entities/LastMeasurements';
+import NotificationScreen from '../screens/notifications/View';
 
 export type MeasurementStackParamList = {
   Home: undefined;
   MeasurementStats: {
     data: LastMeasurements;
   };
+  Notification: undefined;
 };
 
 const Stack = createStackNavigator<MeasurementStackParamList>();
@@ -33,6 +35,7 @@ const MeasurementNavigation = () => {
         name="MeasurementStats"
         component={MeasurementStatsScreen}
       />
+      <Stack.Screen name="Notification" component={NotificationScreen} />
     </Stack.Navigator>
   );
 };

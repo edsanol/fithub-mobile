@@ -1,3 +1,4 @@
+import React from 'react';
 import {SafeAreaView, KeyboardAvoidingView, Platform} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import backgroundStyle from './style';

@@ -16,6 +16,8 @@ import {AthleteEditResponseModel} from '../../domain/models/AthleteEditResponseM
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootOnboardingStackParamList} from '../navigation/OnboardingStackNavigation';
+import messaging from '@react-native-firebase/messaging';
+import DeviceInfo from 'react-native-device-info';
 
 /**
  * Represents the props for the UserContext.
@@ -109,6 +111,30 @@ export const UserProvider = ({children}: {children: React.ReactNode}) => {
         String(String(Config.TOKEN_REFRESH_STORAGE_ENCRYPTED)),
         refreshTokenEncrypted,
       );
+
+      const fcmToken = await messaging().getToken();
+      const brand = DeviceInfo.getBrand();
+      const model = DeviceInfo.getModel();
+
+      const payload = {
+        token: fcmToken,
+        deviceBrand: brand,
+        deviceModel: model,
+      };
+
+      try {
+        await axios.post(
+          `${String(Config.GENERAL_API)}/Athlete/RegisterDeviceToken`,
+          payload,
+          {
+            headers: {
+              Authorization: `Bearer ${user.token}`, // Ajusta según dónde tengas tu token JWT
+            },
+          },
+        );
+      } catch (err) {
+        console.log('Error al registrar el fcmToken:', err);
+      }
 
       dispatch({type: 'signUp', payload: user});
     } catch (error) {
@@ -217,6 +243,48 @@ export const UserProvider = ({children}: {children: React.ReactNode}) => {
       return;
     }
   }, []);
+
+  useEffect(() => {
+    let unsubscribeOnTokenRefresh: (() => void) | null = null;
+
+    if (state.status === 'authenticated' && state.athlete) {
+      unsubscribeOnTokenRefresh = messaging().onTokenRefresh(async newToken => {
+        console.log('FCM token refrescado:', newToken);
+        try {
+          const getKey = await encryptionService.getOrCreateEncryptionKey();
+          const token = await AsyncStorage.getItem(
+            String(Config.TOKEN_STORAGE_ENCRYPTED),
+          );
+          const tokenDecrypted = token
+            ? await encryptionService.getDecryptedData(token, getKey)
+            : '';
+
+          console.log('Token desencriptado:', tokenDecrypted);
+
+          const result = await axios.post(
+            `${String(Config.GENERAL_API)}/Athlete/RegisterDeviceToken`,
+            {deviceToken: newToken},
+            {
+              headers: {
+                Authorization: `Bearer ${tokenDecrypted}`,
+              },
+            },
+          );
+
+          console.log('FCM token registrado en backend:', result);
+        } catch (err) {
+          console.log('Error al refrescar el token en backend:', err);
+        }
+      });
+    }
+
+    // Al desmontar o cambiar estado, desuscribimos
+    return () => {
+      if (unsubscribeOnTokenRefresh) {
+        unsubscribeOnTokenRefresh();
+      }
+    };
+  }, [state.status, state.athlete]);
 
   const value = useMemo(
     () => ({

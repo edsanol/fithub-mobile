@@ -1,23 +1,30 @@
-import { View, Text, ScrollView, RefreshControl } from 'react-native';
-import { BackgoundComponent } from '../../components';
+import {View, Text, ScrollView, RefreshControl} from 'react-native';
+import {BackgoundComponent} from '../../components';
 import DateHeader from './components/DateHeader';
 import homeStyles from './styles';
 import HomeViewModel from './ViewModel';
 import ProgressCard from './components/ProgressCard';
-import { StackScreenProps } from '@react-navigation/stack';
-import { MeasurementStackParamList } from '../../navigation/MeasurementNavigation';
+import {StackScreenProps} from '@react-navigation/stack';
+import {MeasurementStackParamList} from '../../navigation/MeasurementNavigation';
 import PlanActiveInfo from './components/PlanActiveInfo';
 import MembershipExpiration from './components/MembershipExpiration';
 import CardInfo from './components/CardInfo';
 import HomeLoadingSkeleton from './components/HomeLoadingSkeleton';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {useCallback, useEffect, useRef} from 'react';
 
 interface HomeProps
-  extends StackScreenProps<MeasurementStackParamList, 'Home'> { }
+  extends StackScreenProps<MeasurementStackParamList, 'Home'> {}
 
-const HomeScreen = ({ navigation }: HomeProps) => {
-  const { measurements, loading, athlete, refreshing, handleRefresh } =
-    HomeViewModel();
+const HomeScreen = ({navigation}: HomeProps) => {
+  const {
+    measurements,
+    loading,
+    athlete,
+    refreshing,
+    unreadNotifications,
+    resetUnreadNotifications,
+    handleRefresh,
+  } = HomeViewModel();
   const timeoutRef = useRef<any>();
 
   const onRefresh = useCallback(() => {
@@ -37,17 +44,25 @@ const HomeScreen = ({ navigation }: HomeProps) => {
 
   return (
     <BackgoundComponent>
-      <View style={{ flex: 1, marginHorizontal: 16 }}>
-        <DateHeader />
+      <View style={{flex: 1, marginHorizontal: 16}}>
+        <DateHeader
+          navigation={navigation}
+          unreadNotifications={unreadNotifications}
+          resetUnreadNotifications={resetUnreadNotifications}
+        />
         {loading ? (
           <HomeLoadingSkeleton />
         ) : (
           <ScrollView
-            style={{ flex: 1 }}
+            style={{flex: 1}}
             showsVerticalScrollIndicator={false}
             contentContainerStyle={homeStyles.scrollView}
             refreshControl={
-              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={'white'} />
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+                tintColor={'white'}
+              />
             }>
             <View
               style={{
@@ -75,7 +90,7 @@ const HomeScreen = ({ navigation }: HomeProps) => {
             <View style={homeStyles.titleContainer}>
               <Text style={homeStyles.titleText}>Sigue Tu Proceso</Text>
             </View>
-            <View style={{ flex: 1 }}>
+            <View style={{flex: 1}}>
               {measurements.map((item, index) => (
                 <ProgressCard
                   measurement={item}

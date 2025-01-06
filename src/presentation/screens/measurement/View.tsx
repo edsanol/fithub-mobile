@@ -16,6 +16,7 @@ import {mapperMuscleNames} from '../../helper';
 import MeasurementLoadingSkeleton from './components/MeasurementLoadingSkeleton';
 import {useDerivedValue, useSharedValue} from 'react-native-reanimated';
 import {AnimatedText} from './components/AnimatedText';
+import React from 'react';
 
 interface MeasurementStatsProps
   extends StackScreenProps<MeasurementStackParamList, 'MeasurementStats'> {}
