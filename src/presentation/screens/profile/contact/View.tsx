@@ -13,6 +13,7 @@ import {BackButton, FitHub} from '../../../assets/svg/iconSVG';
 import {StackScreenProps} from '@react-navigation/stack';
 import {ProfileStackParamList} from '../../../navigation/ProfileStackNavigation';
 import LoadingScreen from '../../Loading';
+import React from 'react';
 
 interface ContactProps
   extends StackScreenProps<ProfileStackParamList, 'Contact'> {}

@@ -1,0 +1,113 @@
+import {StyleSheet} from 'react-native';
+
+const RoutineListStyles = StyleSheet.create({
+  input: {
+    width: '100%',
+    height: 52,
+    backgroundColor: '#1F222A',
+    borderRadius: 18,
+    paddingLeft: 20,
+    fontSize: 13,
+    fontWeight: '400',
+    color: 'white',
+    top: 8,
+    zIndex: 1,
+  },
+  titleText: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: '#FFFFFF',
+    textAlign: 'center',
+    paddingVertical: 12,
+  },
+  titleRoutines: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: '#FFFFFF',
+    paddingVertical: 12,
+  },
+  mainContainer: {
+    minHeight: 120,
+    width: '100%',
+    backgroundColor: '#2A49FF',
+    borderRadius: 16,
+    marginTop: 40,
+    flexDirection: 'row',
+  },
+  messageText: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#FFFFFF',
+    bottom: 4,
+  },
+  dataContainer: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  cardInfo: {
+    flex: 1,
+    maxWidth: '50%',
+    minWidth: '50%',
+  },
+  muscleContainer: {
+    flexDirection: 'row',
+  },
+  progressCards: {
+    marginHorizontal: 2,
+    height: 80,
+    backgroundColor: 'rgba(15, 17, 23, 0.3)',
+    marginBottom: 12,
+    marginTop: 4,
+    borderRadius: 16,
+    width: '100%',
+    flexDirection: 'row',
+  },
+  progressCardsImageContainer: {
+    height: 76,
+    width: 76,
+    backgroundColor: 'white',
+    alignSelf: 'center',
+    borderRadius: 16,
+  },
+  progressCardsTitle: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: '700',
+    paddingLeft: 12,
+  },
+  ProgressCardInfoData: {
+    height: '32%',
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  progressCardInfoText: {
+    color: '#FFFFFF',
+    fontSize: 11,
+    fontWeight: '500',
+    textAlign: 'center',
+    width: 52,
+    height: 20,
+    borderRadius: 8,
+    backgroundColor: '#2A49FF',
+    marginRight: 16,
+    overflow: 'hidden',
+    lineHeight: 20,
+  },
+  cardProgressText: {
+    color: '#D0D0D0',
+    fontSize: 12,
+    fontWeight: '400',
+    paddingLeft: 4,
+  },
+  noRoutinesText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '700',
+    textAlign: 'center',
+    paddingVertical: 12,
+    marginTop: 40,
+  },
+});
+
+export default RoutineListStyles;

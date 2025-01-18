@@ -87,7 +87,9 @@ const FormScreen = () => {
             activeOpacity={0.8}
             style={formStyles.button}
             onPress={handleSave}>
-            <Text style={formStyles.buttonText}>Guardar</Text>
+            <Text maxFontSizeMultiplier={1.3} style={formStyles.buttonText}>
+              Guardar
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -47,6 +47,8 @@
     "react-native-svg": "^15.7.1",
     "react-native-url-polyfill": "^2.0.0",
     "react-native-vector-icons": "^10.2.0",
+    "react-native-webview": "^13.13.1",
+    "react-native-youtube-iframe": "^2.3.0",
     "victory-native": "^41.4.0"
   },
   "devDependencies": {
