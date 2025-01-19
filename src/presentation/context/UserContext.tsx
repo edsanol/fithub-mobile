@@ -249,7 +249,6 @@ export const UserProvider = ({children}: {children: React.ReactNode}) => {
 
     if (state.status === 'authenticated' && state.athlete) {
       unsubscribeOnTokenRefresh = messaging().onTokenRefresh(async newToken => {
-        console.log('FCM token refrescado:', newToken);
         try {
           const getKey = await encryptionService.getOrCreateEncryptionKey();
           const token = await AsyncStorage.getItem(
@@ -258,8 +257,6 @@ export const UserProvider = ({children}: {children: React.ReactNode}) => {
           const tokenDecrypted = token
             ? await encryptionService.getDecryptedData(token, getKey)
             : '';
-
-          console.log('Token desencriptado:', tokenDecrypted);
 
           const result = await axios.post(
             `${String(Config.GENERAL_API)}/Athlete/RegisterDeviceToken`,
@@ -270,8 +267,6 @@ export const UserProvider = ({children}: {children: React.ReactNode}) => {
               },
             },
           );
-
-          console.log('FCM token registrado en backend:', result);
         } catch (err) {
           console.log('Error al refrescar el token en backend:', err);
         }

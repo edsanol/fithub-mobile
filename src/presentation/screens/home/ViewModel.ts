@@ -8,12 +8,12 @@ import {
   useState,
 } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { measurementByLastMonthUseCase } from '../../../config/MeasurementContainer/container';
-import { LastMeasurements } from '../../../domain/entities/LastMeasurements';
-import { getGymUseCase } from '../../../config/GymContainer/container';
-import { UserContext } from '../../context/UserContext';
-import { getChannelListUseCase } from '../../../config/NotificationContainer/container';
-import { signalRUseCases } from '../../../config/SignalRContainer/container';
+import {measurementByLastMonthUseCase} from '../../../config/MeasurementContainer/container';
+import {LastMeasurements} from '../../../domain/entities/LastMeasurements';
+import {getGymUseCase} from '../../../config/GymContainer/container';
+import {UserContext} from '../../context/UserContext';
+import {getChannelListUseCase} from '../../../config/NotificationContainer/container';
+import {signalRUseCases} from '../../../config/SignalRContainer/container';
 
 const NOTIFICATIONS_KEY = 'UNREAD_NOTIFICATIONS_COUNT';
 
@@ -85,7 +85,7 @@ const HomeViewModel = () => {
   const [value, setValue] = useState(new Date());
   const [measurements, setMeasurements] = useState<LastMeasurements[]>([]);
   const [unreadNotifications, setUnreadNotifications] = useState<number>(0);
-  const { getGym, athlete, gym } = useContext(UserContext);
+  const {getGym, athlete, gym} = useContext(UserContext);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const isInitializedRef = useRef(false);
@@ -121,7 +121,6 @@ const HomeViewModel = () => {
       await waitUntilConnected();
 
       await signalRUseCases.joinChannel(response);
-      console.log('Successfully joined channels');
     } catch (error) {
       console.error('Error en getChannelsByAthlete:', error);
     }
@@ -234,7 +233,7 @@ const HomeViewModel = () => {
     const start = moment().add(0, 'weeks').startOf('week');
 
     return [0].map(adj => {
-      return Array.from({ length: 7 }).map((_, index) => {
+      return Array.from({length: 7}).map((_, index) => {
         const date = moment(start).add(adj, 'week').add(index, 'day');
 
         return {
