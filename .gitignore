@@ -73,3 +73,6 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# exclue google-services.json from app/src
+/android/app/google-services.json
