@@ -3,6 +3,7 @@ import {BackgoundComponent} from '../../components';
 import {SvgXml} from 'react-native-svg';
 import {FitHub} from '../../assets/svg/iconSVG';
 import LottieView from 'lottie-react-native';
+import React from 'react';
 
 interface LoadingScreenProps {
   show?: boolean;

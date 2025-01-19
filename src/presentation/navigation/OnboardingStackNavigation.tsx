@@ -22,7 +22,6 @@ import {
 } from '../screens/onboarding';
 import HomeBottomNavigation from './HomeBottomNavigation';
 import LoadingScreen from '../screens/Loading';
-import {useEffect} from 'react';
 
 /**
  * The parameter list for the OnboardingStackNavigation component.

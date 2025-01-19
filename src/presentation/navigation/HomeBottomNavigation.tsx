@@ -1,10 +1,11 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Platform, StyleSheet } from 'react-native';
-import { TabButton } from '../components';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {Platform, StyleSheet} from 'react-native';
+import {TabButton} from '../components';
 import FormScreen from '../screens/form';
-import { BlurView } from '@react-native-community/blur';
+import {BlurView} from '@react-native-community/blur';
 import MeasurementNavigation from './MeasurementNavigation';
 import ProfileStackNavigation from './ProfileStackNavigation';
+import RoutinesStackNavigation from './RoutinesStackNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -52,6 +53,16 @@ const HomeBottomNavigation = () => {
               title={'Registro'}
               {...props}
             />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Routines"
+        component={RoutinesStackNavigation}
+        options={{
+          tabBarShowLabel: false,
+          tabBarButton: props => (
+            <TabButton icon={'barbell'} title={'Rutinas'} {...props} />
           ),
         }}
       />

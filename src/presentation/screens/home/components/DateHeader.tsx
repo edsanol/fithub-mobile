@@ -1,7 +1,12 @@
 import {View, Text, StyleSheet, TouchableWithoutFeedback} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import HomeViewModel from '../ViewModel';
-import {SvgXml} from 'react-native-svg';
-import {FitHub} from '../../../assets/svg/iconSVG';
+
+interface DateHeaderProps {
+  navigation?: any;
+  unreadNotifications: number;
+  resetUnreadNotifications: () => void;
+}
 
 function capitalizarPrimeraLetra(str: string) {
   const stringReturn = str.charAt(0).toUpperCase() + str.slice(1);
@@ -12,8 +17,17 @@ function capitalizarPrimeraLetra(str: string) {
   return stringReturn;
 }
 
-const DateHeader = () => {
+const DateHeader = ({
+  navigation,
+  unreadNotifications,
+  resetUnreadNotifications,
+}: DateHeaderProps) => {
   const {date, value, weeks, athlete, gym} = HomeViewModel();
+
+  const handleNavigateToNotifications = () => {
+    resetUnreadNotifications();
+    navigation.navigate('Notification');
+  };
 
   return (
     <View style={{minHeight: 148, maxHeight: 148}}>
@@ -27,7 +41,23 @@ const DateHeader = () => {
           </Text>
         </View>
         <View>
-          <SvgXml xml={FitHub} width={60} height={20} />
+          {/* <SvgXml xml={FitHub} width={60} height={20} /> */}
+          <TouchableWithoutFeedback
+            onPress={handleNavigateToNotifications}
+            style={{
+              backgroundColor: '#2f0743',
+              borderRadius: 40,
+              padding: 4,
+            }}>
+            <View>
+              <Icon name={'notifications'} size={30} color={'white'} />
+              {unreadNotifications > 0 && (
+                <View style={styles.badge}>
+                  <Text style={styles.badgeText}>{unreadNotifications}</Text>
+                </View>
+              )}
+            </View>
+          </TouchableWithoutFeedback>
         </View>
       </View>
       <View style={{flex: 1}}>
@@ -77,7 +107,7 @@ export default DateHeader;
 
 const styles = StyleSheet.create({
   container: {
-    height: '24%',
+    height: '28%',
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -119,5 +149,21 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: 'transparent',
     lineHeight: 28,
+  },
+  badge: {
+    position: 'absolute',
+    top: -5,
+    right: -5,
+    backgroundColor: 'red',
+    borderRadius: 8,
+    width: 16,
+    height: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  badgeText: {
+    color: 'white',
+    fontSize: 10,
+    fontWeight: 'bold',
   },
 });
