@@ -1,9 +1,11 @@
 import {
+  HttpTransportType,
   HubConnection,
   HubConnectionBuilder,
   LogLevel,
 } from '@microsoft/signalr';
-import { SignalRService } from '../../domain/services/signalRService';
+import {SignalRService} from '../../domain/services/signalRService';
+import Config from 'react-native-config';
 
 export class SignalRServiceImpl implements SignalRService {
   private static instance: SignalRServiceImpl;
@@ -11,9 +13,11 @@ export class SignalRServiceImpl implements SignalRService {
 
   private constructor() {
     this.connection = new HubConnectionBuilder()
-      .withUrl('http://192.168.1.10:45455/hubs/notification')
+      .withUrl(`${String(Config.GENERAL_API_HUB)}/notification`, {
+        withCredentials: true,
+      })
       .withAutomaticReconnect()
-      .configureLogging(LogLevel.Information)
+      .configureLogging(LogLevel.Debug)
       .build();
   }
 

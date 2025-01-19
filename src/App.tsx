@@ -1,11 +1,11 @@
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { UserProvider } from './presentation/context/UserContext';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {UserProvider} from './presentation/context/UserContext';
 import OnboardingStackNavigation from './presentation/navigation/OnboardingStackNavigation';
-import { NavigationContainer } from '@react-navigation/native';
-import { useEffect } from 'react';
-import { Platform, StatusBar } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {useEffect} from 'react';
+import {Platform, StatusBar} from 'react-native';
 import messaging from '@react-native-firebase/messaging';
-import { PermissionsAndroid } from 'react-native';
+import {PermissionsAndroid} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const App = () => {
@@ -19,7 +19,6 @@ const App = () => {
       authStatus === messaging.AuthorizationStatus.PROVISIONAL;
 
     const fcmToken = await messaging().getToken();
-    console.log('FCM Token:', fcmToken);
   };
 
   useEffect(() => {
@@ -65,7 +64,7 @@ const App = () => {
   }, []);
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={{flex: 1}}>
       <NavigationContainer
         theme={{
           dark: true,

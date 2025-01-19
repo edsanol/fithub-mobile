@@ -19,7 +19,7 @@ const ExerciseDetailViewModel = () => {
   ) => {
     try {
       setLoading(true);
-
+      // console.log(set);
       const saveHistoricalSet = await insertAthleteHistoricalSetUseCase.execute(
         set,
       );
@@ -28,7 +28,7 @@ const ExerciseDetailViewModel = () => {
         navigation.popToTop();
       }
     } catch (error) {
-      console.log(error);
+      console.log('error routines', error);
       setCompleted(false);
     } finally {
       setLoading(false);
