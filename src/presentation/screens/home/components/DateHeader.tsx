@@ -8,6 +8,10 @@ interface DateHeaderProps {
   resetUnreadNotifications: () => void;
 }
 
+const truncateText = (text: string, maxLength = 34) => {
+  return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+};
+
 function capitalizarPrimeraLetra(str: string) {
   const stringReturn = str.charAt(0).toUpperCase() + str.slice(1);
   if (stringReturn.charAt(stringReturn.length - 1) === '.') {
@@ -33,15 +37,11 @@ const DateHeader = ({
     <View style={{minHeight: 148, maxHeight: 148}}>
       <View style={styles.container}>
         <View style={{justifyContent: 'space-evenly'}}>
-          <Text style={{fontSize: 14, fontWeight: '700', color: '#FFFFFF'}}>
+          <Text style={{fontSize: 14, fontWeight: '700', color: '#7f8490'}}>
             Hola, {athlete?.athleteName}
-          </Text>
-          <Text style={{fontSize: 12, fontWeight: '400', color: '#7f8490'}}>
-            {gym?.gymName}.
           </Text>
         </View>
         <View>
-          {/* <SvgXml xml={FitHub} width={60} height={20} /> */}
           <TouchableWithoutFeedback
             onPress={handleNavigateToNotifications}
             style={{
@@ -61,7 +61,9 @@ const DateHeader = ({
         </View>
       </View>
       <View style={{flex: 1}}>
-        <Text style={styles.textDate}>{capitalizarPrimeraLetra(date)}</Text>
+        <Text maxFontSizeMultiplier={1.2} style={styles.textDate}>
+          {capitalizarPrimeraLetra(truncateText(gym?.gymName ?? ''))}
+        </Text>
         {weeks.map((dates, index) => (
           <View style={styles.itemRow} key={index}>
             {dates.map((item, dateIndex) => {

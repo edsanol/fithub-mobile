@@ -9,8 +9,43 @@ const ExerciseDetailViewModel = () => {
   const [completed, setCompleted] = useState(false);
 
   const extractVideoId = (url: string) => {
-    const urlObj = new URL(url);
-    return urlObj.searchParams.get('v');
+    try {
+      const urlObj = new URL(url);
+
+      // 1. Si la URL contiene 'watch', obtenemos el parámetro 'v'
+      if (
+        urlObj.hostname.includes('youtube.com') &&
+        urlObj.pathname === '/watch'
+      ) {
+        return urlObj.searchParams.get('v');
+      }
+
+      // 2. Si la URL es de Shorts, obtenemos el ID del pathname
+      if (
+        urlObj.hostname.includes('youtube.com') &&
+        urlObj.pathname.startsWith('/shorts/')
+      ) {
+        return urlObj.pathname.split('/')[2];
+      }
+
+      // 3. Si la URL es del tipo 'youtu.be', obtenemos el ID del pathname
+      if (urlObj.hostname.includes('youtu.be')) {
+        return urlObj.pathname.substring(1);
+      }
+
+      // 4. Si la URL es del tipo embed, obtenemos el ID del pathname
+      if (
+        urlObj.hostname.includes('youtube.com') &&
+        urlObj.pathname.startsWith('/embed/')
+      ) {
+        return urlObj.pathname.split('/')[2];
+      }
+
+      return null;
+    } catch (error) {
+      console.error('Error extracting video ID:', error);
+      return null;
+    }
   };
 
   const handleSave = async (
@@ -19,7 +54,6 @@ const ExerciseDetailViewModel = () => {
   ) => {
     try {
       setLoading(true);
-      // console.log(set);
       const saveHistoricalSet = await insertAthleteHistoricalSetUseCase.execute(
         set,
       );
