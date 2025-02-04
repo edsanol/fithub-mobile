@@ -1,18 +1,19 @@
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {UserProvider} from './presentation/context/UserContext';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { UserProvider } from './presentation/context/UserContext';
 import OnboardingStackNavigation from './presentation/navigation/OnboardingStackNavigation';
-import {NavigationContainer} from '@react-navigation/native';
-import {useEffect} from 'react';
-import {Platform, StatusBar} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { useEffect } from 'react';
+import { Platform, StatusBar } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
-import {PermissionsAndroid} from 'react-native';
+import { PermissionsAndroid } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const App = () => {
   const requestUserPermission = async () => {
-    PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
-    );
+    if (Platform.OS === 'android')
+      PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
+      );
     const authStatus = await messaging().requestPermission();
     const enabled =
       authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
@@ -64,7 +65,7 @@ const App = () => {
   }, []);
 
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer
         theme={{
           dark: true,
